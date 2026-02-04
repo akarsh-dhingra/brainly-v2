@@ -46,15 +46,19 @@ brainly/
 │ ├── src/
 │ └── ...
 │
-├── backend/
-│ ├── src/
-│ │ ├── routes/
-│ │ ├── controllers/
-│ │ ├── models/
-│ │ ├── services/
-│ │ └── utils/
-│ └── ...
+server/
+├── src/
+│   ├── controllers/   # Request handlers
+│   ├── routes/        # API routes
+│   ├── models/        # MongoDB schemas
+│   ├── services/      # Business logic
+│   ├── middlewares/   # Auth & error handling
+│   ├── utils/         # Helpers & constants
+│   └── index.ts       # App entry point
 │
+├── .env
+├── package.json
+└── tsconfig.json│
 └── README.md
 
 ## 🧠 Core Concept
@@ -108,87 +112,4 @@ The backend is designed with scalability in mind:
 - Node.js (v18+ recommended)
 - MongoDB
 - npm / yarn / pnpm
-
-### Clone the repository
-```bash
-git clone https://github.com/your-username/brainly.git
-cd brainly
-Backend setup
-cd server
-npm install
-npm run dev
-
-Frontend setup
-cd client
-npm install
-npm run dev
-
-📌 Environment Variables
-
-Create a .env file in the server directory:
-
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-🧪 Future Enhancements
-
-
-🔎 Global search across all chunks
-
-
-🧠 AI-based summarization & recall
-
-
-🏷 Smart tagging
-
-
-📱 Mobile-friendly UI
-
-
-☁️ Cloud deployment
-
-
-🧵 Versioned notes
-
-
-
-🤝 Contributing
-Contributions are welcome!
-If you have ideas around scalability, performance, or UX — feel free to open an issue or PR.
-
-📄 License
-This project is licensed under the MIT License.
-
-💡 Inspiration
-Brainly is inspired by how people already use:
-
-
-WhatsApp (Me)
-
-
-Notes apps
-
-
-Bookmark managers
-
-
-Knowledge bases
-
-
-…to store information — but brings everything into one unified, scalable system.
-
-
-“Your brain is for thinking, not remembering everything.”
-— Brainly 🧠
-
-
 ---
-
-If you want, I can:
-- Rewrite this for **open-source tone**
-- Add **API docs section**
-- Add **database schema diagrams**
-- Add **deployment instructions (Docker / Railway / AWS)**
-- Or make a **startup-style README** 🚀
-
-Just tell me the vibe.
