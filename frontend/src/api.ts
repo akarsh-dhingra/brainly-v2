@@ -23,14 +23,23 @@ export async function signIn(username: string, password: string) {
   return data;
 }
 
+function isNetworkError(e: unknown): boolean {
+  return e instanceof TypeError && (e.message === 'Failed to fetch' || e.message === 'Load failed');
+}
+
 export async function getContent(): Promise<{ _id: string; title: string; link: string; type: string }[] | null> {
-  const res = await fetch(`${API}/api/v1/content`, { ...opts });
-  if (res.status === 401) return null;
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.msg || 'Failed to load content');
-  const raw = data.msg;
-  if (!raw) return [];
-  return Array.isArray(raw) ? raw : [raw];
+  try {
+    const res = await fetch(`${API}/api/v1/content`, { ...opts });
+    if (res.status === 401) return null;
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.msg || 'Failed to load content');
+    const raw = data.msg;
+    if (!raw) return [];
+    return Array.isArray(raw) ? raw : [raw];
+  } catch (e) {
+    if (isNetworkError(e)) throw new Error('Cannot reach server. Is the backend running on port 3001?');
+    throw e;
+  }
 }
 
 export async function addContent(title: string, link: string, type: string) {

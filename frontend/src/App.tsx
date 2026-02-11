@@ -39,6 +39,7 @@ function App() {
       setLoading(false);
     }
   };
+  // Only run loadContent once on mount; avoid retries when backend is down
 
   useEffect(() => {
     loadContent();

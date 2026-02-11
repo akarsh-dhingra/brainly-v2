@@ -24,10 +24,11 @@ app.use(cookieParser());
 app.use(express.json());
 
 connectDb()
-.then(()=>{
-app.listen(PORT,()=>{
-    console.log(`Listening to ${PORT}`);
-})
+.then( ()=>{
+    // Why added Idk
+    app.listen(PORT,()=>{
+        console.log(`Listening to ${PORT}`);
+    });
 })
 .catch(()=>{
     console.log("Error occured while connecting to MongoDb");
@@ -94,9 +95,9 @@ app.post("/api/v1/signIn",async(req,res)=>{
     .cookie("AccessToken",accessToken,options)
       .json({ msg: "Login successful" }); // Add response body
 });
-app.post("/logout",(req,res)=>{
+// app.post("/logout",(req,res)=>{
     
-});
+// });
 app.post("/addContent",auth,async (req,res)=>{
 try {
     const user=req.user;
@@ -115,8 +116,8 @@ try {
 });
 app.get("/api/v1/content",auth,async (req,res)=>{
 const userId=req.user._id;
-const content=await Content.findOne({userId:userId}).populate("userId");
-console.log(content);
+const content=await Content.find({userId:userId}).populate("userId").sort({_id:-1});
+// Why this Idk
 res.status(200).json({msg:content});
 });
 app.delete("/api/v1/content/:id",auth,async (req,res)=>{
