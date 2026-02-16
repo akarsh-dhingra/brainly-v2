@@ -41,26 +41,6 @@ The long-term goal of Brainly is to be **highly scalable**, **searchable**, and 
 
 ## 📦 Project Structure (High-Level)
 
-brainly/
-├── frontend/
-│ ├── src/
-│ └── ...
-│
-server/
-├── src/
-│   ├── controllers/   # Request handlers
-│   ├── routes/        # API routes
-│   ├── models/        # MongoDB schemas
-│   ├── services/      # Business logic
-│   ├── middlewares/   # Auth & error handling
-│   ├── utils/         # Helpers & constants
-│   └── index.ts       # App entry point
-│
-├── .env
-├── package.json
-└── tsconfig.json│
-└── README.md
-
 ## 🧠 Core Concept
 
 Brainly revolves around **content chunks**.
